@@ -15,9 +15,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './screen/Home';
 import ItemList from './screen/ItemList';
 import ProvinceList from './screen/ProvinceList';
-
-import {Button, View, StyleSheet} from 'react-native';
-import {Icon} from 'react-native-elements';
+import Detail from './screen/Detail';
+import Viewer from './screen/Viewer';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +28,7 @@ const App = () => {
           initialRouteName="Home"
           screenOptions={{
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#1F85DE',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -40,48 +39,23 @@ const App = () => {
             name="Home"
             component={HomeScreen}
             options={{
-              title: 'Home',
-              headerRight: () => (
-                <Button
-                  onPress={() => alert('This is a button!')}
-                  title="Info"
-                  color="#fff"
-                />
-              ),
+              headerShown: false,
             }}
           />
           <Stack.Screen
             name="Provinces"
             component={ProvinceList}
             options={{
-              title: 'Province',
-              headerRight: () => (
-                <View style={styles.headerRightStyle}>
-                  <Icon
-                    type="MaterialIcons"
-                    name={'search'}
-                    color="#fff"
-                    onPress={() => alert('This is a button!')}
-                  />
-                </View>
-              ),
+              title: 'Provinsi',
             }}
           />
-          <Stack.Screen
-            name="List"
-            component={ItemList}
-            options={{title: 'Gallery'}}
-          />
+          <Stack.Screen name="List" component={ItemList} />
+          <Stack.Screen name="Detail" component={Detail} />
+          <Stack.Screen name="Viewer" component={Viewer} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  headerRightStyle: {
-    padding: 10,
-  },
-});
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -9,14 +9,24 @@ import {
 import batiks from '../services/batiks';
 import CapitalizedText from '../components/CapitalizedText';
 
-const ItemList = ({navigation}) => {
+const ItemList = ({route, navigation}) => {
+  const {title, selected} = route.params;
+  const results = batiks.data.filter((item, index) => index === selected);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: title || 'Gallery',
+    });
+  }, [navigation, title]);
+
   const renderItem = ({item}) => {
     return (
       <View style={styles.itemContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('List')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Detail', {item: item})}>
           <Image source={item.image} style={styles.smallBanner} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('List')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Detail', {item: item})}>
           <View style={styles.itemDesc}>
             <View>
               <CapitalizedText bold title>
@@ -31,7 +41,7 @@ const ItemList = ({navigation}) => {
   return (
     <View style={styles.layout}>
       <FlatList
-        data={batiks.data}
+        data={results}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />

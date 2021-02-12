@@ -13,7 +13,11 @@ const CapitalizedText = (props) => {
     <Text
       style={{
         fontWeight: props.bold ? 'bold' : '100',
-        fontSize: props.title ? 20 : 14,
+        fontSize: props.title
+          ? typeof props.title === 'number'
+            ? props.title
+            : 20
+          : 14,
       }}>
       {eachWord}
     </Text>

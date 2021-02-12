@@ -20,14 +20,30 @@ const HomeScreen = ({navigation}) => {
             source={require('./img/small-banner.jpg')}
             style={styles.smallBanner}
           />
-          <View style={styles.smallBannerTextContainer}>
-            <Text style={styles.smallBannerText}>Batik Gallery</Text>
+          <View style={styles.batikContainer}>
+            <Text style={styles.smallBannerText}>Galeri Batik</Text>
           </View>
         </TouchableOpacity>
       </View>
       {/* <Button title="List Batik" onPress={() => navigation.navigate('List')} /> */}
-      <View style={styles.restContainer}>
-        <Text style={[styles.baseText, styles.titleText]}>Hello world!</Text>
+      <View style={styles.imageContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Provinces')}>
+          <Image
+            source={require('./img/games-banner.jpg')}
+            style={styles.smallBanner}
+          />
+          <View style={styles.batikContainer}>
+            <Text style={styles.smallBannerText}>Permainan</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.creditContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Provinces')}>
+          <Image
+            source={require('./img/thank-you.jpg')}
+            style={styles.smallBanner}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -48,30 +64,47 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   imageContainer: {
+    flex: 2,
+    justifyContent: 'flex-start',
+    padding: 5,
+  },
+  creditContainer: {
     flex: 1,
     justifyContent: 'flex-start',
+    padding: 5,
   },
   restContainer: {
     flex: 4,
     paddingTop: 10,
   },
   smallBanner: {
-    width: deviceWidth - 20,
+    width: deviceWidth - 30,
     borderRadius: 10,
-    height: 120,
+    height: '100%',
   },
   smallBannerText: {
     color: 'black',
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255,255,255, 0.7)',
     borderRadius: 10,
     fontWeight: 'bold',
+    fontSize: 30,
+    fontStyle: 'italic',
   },
-  smallBannerTextContainer: {
+  batikContainer: {
     position: 'absolute',
-    top: 60,
-    left: 230,
+    top: '70%',
+    left: deviceWidth - 230,
     right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  gamesContainer: {
+    position: 'absolute',
+    top: '-75%',
+    left: 0,
+    right: deviceWidth - 230,
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
