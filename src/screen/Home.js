@@ -16,10 +16,12 @@ const HomeScreen = ({navigation}) => {
       {/* <Text style={[styles.baseText, styles.titleText]}>Hello world!</Text> */}
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('Provinces')}>
-          <Image
-            source={require('./img/small-banner.jpg')}
-            style={styles.smallBanner}
-          />
+          <View style={styles.imageShadow}>
+            <Image
+              source={require('./img/small-banner.jpg')}
+              style={styles.smallBanner}
+            />
+          </View>
           <View style={styles.batikContainer}>
             <Text style={styles.smallBannerText}>Galeri Batik</Text>
           </View>
@@ -67,16 +69,25 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'flex-start',
     padding: 5,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    elevation: 5,
+    marginBottom: 5,
   },
   creditContainer: {
     flex: 1,
     justifyContent: 'flex-start',
     padding: 5,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    elevation: 5,
+    marginBottom: 5,
   },
   restContainer: {
     flex: 4,
     paddingTop: 10,
   },
+  imageShadow: {},
   smallBanner: {
     width: deviceWidth - 30,
     borderRadius: 10,
@@ -90,7 +101,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     fontStyle: 'italic',
-    elevation: 6,
+    elevation: 5,
   },
   batikContainer: {
     position: 'absolute',
