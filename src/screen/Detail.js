@@ -43,6 +43,9 @@ const Detail = ({route, navigation}) => {
           {item.name}
         </CapitalizedText>
       </View>
+      <View style={styles.credit}>
+        <CapitalizedText title={20}>{item.credit}</CapitalizedText>
+      </View>
       <View style={styles.content}>
         <Text style={styles.contentText}>{item.description}</Text>
       </View>
@@ -73,6 +76,13 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    marginBottom: 10,
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+  },
+  credit: {
+    padding: 10,
+    width: '100%',
+    borderRadius: 10,
     marginBottom: 10,
     backgroundColor: 'rgba(255, 255, 255, 1)',
   },

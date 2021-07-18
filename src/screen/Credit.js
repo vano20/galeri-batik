@@ -6,17 +6,26 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  Linking,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const deviceWidth = Dimensions.get('window').width;
 
-const HomeScreen = ({navigation}) => {
+const Credit = ({navigation}) => {
+  const handlePress = async (url) => {
+    await Linking.openURL(url);
+  };
   return (
     <View style={styles.container}>
       {/* <Text style={[styles.baseText, styles.titleText]}>Hello world!</Text> */}
       <View style={styles.imageContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('List')}>
+        <TouchableOpacity
+          onPress={() =>
+            handlePress(
+              'https://unsplash.com/@camerale?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+            )
+          }>
           <View style={styles.imageShadow}>
             <Image
               source={require('./img/small-banner.jpg')}
@@ -29,13 +38,20 @@ const HomeScreen = ({navigation}) => {
             locations={[0.7, 1]}
             colors={['#ffffff44', '#00000088']}
             style={styles.batikContainer}>
-            <Text style={styles.smallBannerText}>Galeri Batik Surabaya</Text>
+            <Text style={styles.smallBannerText}>
+              Photo by @camerale on unsplash
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
       </View>
       {/* <Button title="List Batik" onPress={() => navigation.navigate('List')} /> */}
       <View style={styles.imageContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('Permainan')}>
+        <TouchableOpacity
+          onPress={() =>
+            handlePress(
+              'https://unsplash.com/@brett_jordan?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+            )
+          }>
           <Image
             source={require('./img/games-banner.jpg')}
             style={styles.smallBanner}
@@ -46,16 +62,53 @@ const HomeScreen = ({navigation}) => {
             locations={[0.7, 1]}
             colors={['#ffffff44', '#00000088']}
             style={styles.batikContainer}>
-            <Text style={styles.smallBannerText}>Permainan</Text>
+            <Text style={styles.smallBannerText}>
+              Photo by @brett_jordan on unsplash
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
       </View>
       <View style={styles.creditContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('Terima kasih!')}>
+        <TouchableOpacity
+          onPress={() =>
+            handlePress(
+              'https://unsplash.com/@mattjonesdp?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText',
+            )
+          }>
           <Image
             source={require('./img/thank-you.jpg')}
             style={styles.smallBanner}
           />
+          <LinearGradient
+            start={{x: 0.0, y: 0.0}}
+            end={{x: 0.0, y: 1.0}}
+            locations={[0.7, 1]}
+            colors={['#ffffff44', '#00000088']}
+            style={styles.batikContainer}>
+            <Text style={styles.smallBannerText}>
+              Photo by @mattjonesdp on unsplash
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.creditContainer}>
+        <TouchableOpacity
+          onPress={() =>
+            handlePress(
+              'https://unsplash.com/@dead____artist?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
+            )
+          }>
+          <Image source={require('./img/map.jpg')} style={styles.smallBanner} />
+          <LinearGradient
+            start={{x: 0.0, y: 0.0}}
+            end={{x: 0.0, y: 1.0}}
+            locations={[0.7, 1]}
+            colors={['#ffffff44', '#00000088']}
+            style={styles.batikContainer}>
+            <Text style={styles.smallBannerText}>
+              Photo by @dead____artist on unsplash
+            </Text>
+          </LinearGradient>
         </TouchableOpacity>
       </View>
     </View>
@@ -77,7 +130,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   imageContainer: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'flex-start',
     padding: 0,
     borderRadius: 10,
@@ -111,8 +164,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     fontWeight: 'bold',
-    fontSize: 30,
-    fontStyle: 'italic',
+    fontSize: 20,
     textAlign: 'right',
     width: '100%',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -130,4 +182,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-export default HomeScreen;
+export default Credit;

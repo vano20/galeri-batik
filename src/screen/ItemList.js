@@ -5,34 +5,34 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Dimensions,
 } from 'react-native';
-import batiks from '../services/batiks';
+import batiks from '../services/batik-jatim';
 import CapitalizedText from '../components/CapitalizedText';
 
-const ItemList = ({route, navigation}) => {
-  const {title, selected} = route.params;
-  const results = batiks.data.filter((item, index) => index === selected);
+const deviceWidth = Dimensions.get('window').width;
+
+const ItemList = ({navigation}) => {
+  const results = batiks.data;
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: title || 'Gallery',
+      title: 'Surabaya',
     });
-  }, [navigation, title]);
+  });
 
   const renderItem = ({item}) => {
     return (
       <View style={styles.itemContainer}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Detail', {item: item})}>
-          <Image source={item.image} style={styles.smallBanner} />
+          <Image source={{uri: item.image}} style={styles.smallBanner} />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('Detail', {item: item})}>
           <View style={styles.itemDesc}>
-            <View>
-              <CapitalizedText bold title>
-                {item.name}
-              </CapitalizedText>
-            </View>
+            <CapitalizedText bold title>
+              {item.name}
+            </CapitalizedText>
           </View>
         </TouchableOpacity>
       </View>
@@ -59,11 +59,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     flexDirection: 'row',
+    width: deviceWidth,
   },
   itemDesc: {
     flex: 4,
     padding: 10,
     flexDirection: 'column',
+    width: deviceWidth - 130,
   },
   smallBanner: {
     flex: 1,

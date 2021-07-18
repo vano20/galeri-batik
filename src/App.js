@@ -14,9 +14,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeScreen from './screen/Home';
 import ItemList from './screen/ItemList';
-import ProvinceList from './screen/ProvinceList';
 import Detail from './screen/Detail';
 import Viewer from './screen/Viewer';
+import GameOne from './screen/GameOne';
+import GameTwo from './screen/GameTwo';
+import GameList from './screen/GameList';
+import Credit from './screen/Credit';
 
 const Stack = createStackNavigator();
 
@@ -42,16 +45,13 @@ const App = () => {
               headerShown: false,
             }}
           />
-          <Stack.Screen
-            name="Provinces"
-            component={ProvinceList}
-            options={{
-              title: 'Provinsi',
-            }}
-          />
           <Stack.Screen name="List" component={ItemList} />
           <Stack.Screen name="Detail" component={Detail} />
           <Stack.Screen name="Viewer" component={Viewer} />
+          <Stack.Screen name="Permainan 1" component={GameOne} />
+          <Stack.Screen name="Permainan 2" component={GameTwo} />
+          <Stack.Screen name="Permainan" component={GameList} />
+          <Stack.Screen name="Terima kasih!" component={Credit} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
