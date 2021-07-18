@@ -1,4 +1,4 @@
-# firstApp
+# galeri-batik
 react-native repository for educational media learning based project
 
 ## Install Dependencies
