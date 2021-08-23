@@ -1,4 +1,4 @@
-# galeri-batik
+# galeri-batik v1
 react-native repository for educational media learning based project
 
 ## Install Dependencies
